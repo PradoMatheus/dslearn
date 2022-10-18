@@ -1,10 +1,13 @@
 package com.devsuperior.dslearn.entities;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -20,6 +23,9 @@ public class Course implements Serializable {
     private String name;
     private String imgUri;
     private String imgGrayUri;
+    @OneToMany(mappedBy = "course")
+    @Setter(AccessLevel.NONE)
+    private List<Offer> offers = new ArrayList<>();
 
     public Course(){}
 
