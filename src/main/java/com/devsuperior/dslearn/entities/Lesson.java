@@ -24,7 +24,7 @@ public abstract class Lesson implements Serializable {
     private String title;
     private Integer position;
     @ManyToOne
-    @JoinTable(name = "section_id")
+    @JoinColumn(name = "section_id")
     private Section section;
     @Setter(AccessLevel.NONE)
     @ManyToMany
