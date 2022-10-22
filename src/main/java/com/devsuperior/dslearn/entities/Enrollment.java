@@ -8,9 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Getter
 @Setter
@@ -31,6 +29,9 @@ public class Enrollment implements Serializable {
     private boolean onlyUpdate;
     @ManyToMany(mappedBy = "enrollmentsDone")
     private Set<Lesson> lessonsDone = new HashSet<>();
+    @OneToMany(mappedBy = "enrollment")
+    @Setter(AccessLevel.NONE)
+    private List<Deliver> deliveries = new ArrayList<>();
 
     public EnrollmentPK getId() {
         return id;
